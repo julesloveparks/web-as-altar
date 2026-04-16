@@ -12,6 +12,17 @@ let isDragging = !1;
 let startX, startY;
 let dragClone = null;
 let dragOffsetX, dragOffsetY;
+// 1. Create the sound once (top of file)
+const clickSound = new Audio("click.wav");
+
+// 2. Add listener (also top-level, not inside another function)
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("button");
+  if (!button) return;
+
+  clickSound.currentTime = 0;
+  clickSound.play();
+});
 const taillePiece = 200;
 const unsplashImages = [{
     name: "Images by Europeana on unsplash - https://unsplash.com/fr/@europeana",
